@@ -19,12 +19,21 @@ class Museo(models.Model):
         return total
     
     def guias_mas_experimentados(self):
-        mejor_guia = self.guias.all().order_by('-anios_experiencia_guia').first()
-        
-        if mejor_guia:
-            return mejor_guia.nombre_completo
-        else:
-            return "No hay texto"
+        todos_los_guias = self.guias.all()
+        if len(todos_los_guias) == 0:
+            return "Sin guías asignados"
+
+        mayor_experiencia = 0
+        for guia in todos_los_guias:
+            if guia.anios_experiencia_guia > mayor_experiencia:
+                mayor_experiencia = guia.anios_experiencia_guia
+                
+        nombres_ganadores = []
+        for guia in todos_los_guias:
+            if guia.anios_experiencia_guia == mayor_experiencia:
+                nombres_ganadores.append(guia.nombre_completo)
+                
+        return ", ".join(nombres_ganadores)
 
 class GuiaMuseo(models.Model):
     nombre_completo = models.CharField("Nombre y Apellido del guia")
@@ -47,6 +56,6 @@ class Exhibicion(models.Model):
         related_name="exhibiciones")
     
     def __str__(self):
-        return "%s %d %f %s " % (self.titulo_exhibicion, self.duaracion_meses,\
+        return "%s %d %f %s " % (self.titulo_exhibicion, self.duracion_meses,\
             self.costo_produccion, self.tematica)
     
