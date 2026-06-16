@@ -39,7 +39,7 @@ class GuiaMuseo(models.Model):
     
 class Exhibicion(models.Model):
     titulo_exhibicion = models.CharField("Titulo de la exhibicion")
-    duaracion_meses = models.IntegerField("Duracion de la exhibicion en meses")
+    duracion_meses = models.IntegerField("Duracion de la exhibicion en meses")
     costo_produccion = models.FloatField("Costo total de la produccion")
     tematica = models.CharField("Tematica proncipal de la exhibicion")
     

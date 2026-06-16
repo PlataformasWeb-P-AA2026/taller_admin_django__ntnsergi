@@ -18,3 +18,8 @@ class GuiaMuseoAdmin(admin.ModelAdmin):
 
 class ExhibicionAdmin(admin.ModelAdmin):
     list_display = ('titulo_exhibicion', 'duracion_meses', 'costo_produccion', 'tematica', 'guia')
+
+
+admin.site.register(Museo, MuseoAdmin)
+admin.site.register(GuiaMuseo, GuiaMuseoAdmin)
+admin.site.register(Exhibicion, ExhibicionAdmin)
