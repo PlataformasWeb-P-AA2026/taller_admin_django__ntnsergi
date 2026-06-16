@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'patrimonio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mi_basedatos',
-        'USER': 'postgres',      
+        'NAME': 'user',          
+        'USER': 'user',          
         'PASSWORD': 'password',  
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5435',          
     }
 }
 
